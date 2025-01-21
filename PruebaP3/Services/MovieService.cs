@@ -38,6 +38,13 @@ namespace PruebaP3.Services
         }
     }
 
-    
+    public class MovieResponse
+    {
+        public string Title { get; set; }
+        public List<string> Genres { get; set; }
+        public List<string> Actors { get; set; }
+        public string Awards { get; set; }
+        public string Website { get; set; }
+    }
 
 }
