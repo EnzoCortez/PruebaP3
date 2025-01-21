@@ -12,10 +12,20 @@
         <ListView ItemsSource="{Binding Movies}">
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <TextCell Text="{Binding Title}" Detail="{Binding Genre}" />
+                    <ViewCell>
+                        <StackLayout Padding="10" Spacing="5">
+                            <Label Text="{Binding Title}" FontSize="18" FontAttributes="Bold"/>
+                            <Label Text="{Binding Genre}" FontSize="14" TextColor="Gray"/>
+                            <Label Text="{Binding Actor}" FontSize="14" TextColor="Blue"/>
+                            <Label Text="{Binding Awards}" FontSize="14" TextColor="Gray"/>
+                            <Label Text="{Binding Website}" FontSize="14" TextColor="Blue"/>
+                            <Label Text="Ecortez: Ecortez" FontSize="14" TextColor="DarkGray"/>
+                        </StackLayout>
+                    </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
+
         <Button Text="Actualizar" Command="{Binding LoadMoviesCommand}" />
     </VerticalStackLayout>
 </ContentPage>
