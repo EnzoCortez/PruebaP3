@@ -1,9 +1,19 @@
-﻿namespace PruebaP3;
+﻿using PruebaP3.Views;
+
+namespace PruebaP3;
 
 public partial class AppShell : Shell
 {
-    public AppShell()
+    public AppShell(SearchPage searchPage) // Constructor con parámetro
     {
-        InitializeComponent(); // ← Aquí es donde ocurre el error
+        InitializeComponent();
+
+        // 🔹 Agregar SearchPage manualmente
+        Items.Add(new ShellContent
+        {
+            Title = "Buscar",
+            Content = searchPage
+        });
     }
 }
+

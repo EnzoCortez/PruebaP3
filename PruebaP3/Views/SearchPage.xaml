@@ -5,7 +5,7 @@
              Title="Enzo Cortez">
 
     <ContentPage.BindingContext>
-        <vm:SearchViewModel/>
+        <vm:SearchViewModel />
     </ContentPage.BindingContext>
 
     <VerticalStackLayout Padding="20">

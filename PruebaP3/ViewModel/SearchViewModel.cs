@@ -2,25 +2,22 @@
 using CommunityToolkit.Mvvm.Input;
 using PruebaP3.Services;
 
-
 namespace PruebaP3.ViewModel
 {
-
-
-    public partial class SearchViewModel : ObservableObject
+    [ObservableObject]
+    public partial class SearchViewModel
     {
         private readonly MovieService _movieService;
         private readonly DatabaseService _databaseService;
 
-        public SearchViewModel()
-        {
+        //  Constructor sin parámetros requerido por XAML
+        public SearchViewModel() { }
 
-        }
-
+        // Constructor con dependencias (usado en inyección de dependencias)
         public SearchViewModel(MovieService movieService, DatabaseService databaseService)
         {
-            _movieService = movieService;
-            _databaseService = databaseService;
+            _movieService = movieService ?? throw new ArgumentNullException(nameof(movieService));
+            _databaseService = databaseService ?? throw new ArgumentNullException(nameof(databaseService));
         }
 
         [ObservableProperty]
@@ -57,5 +54,4 @@ namespace PruebaP3.ViewModel
             Message = string.Empty;
         }
     }
-
 }

@@ -1,12 +1,14 @@
-﻿namespace PruebaP3
+﻿using PruebaP3.Views;
+
+namespace PruebaP3
 {
     public partial class App : Application
     {
-        public App()
+        public App(SearchPage searchPage) //  Inyectar SearchPage
         {
             InitializeComponent();
-
-            MainPage = new AppShell();
+            MainPage = new AppShell(searchPage); //  Pasar SearchPage a AppShell
         }
     }
+
 }
