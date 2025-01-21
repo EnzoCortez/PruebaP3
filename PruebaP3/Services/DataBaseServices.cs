@@ -1,29 +1,27 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using PruebaP3.Models;
+﻿using PruebaP3.Models;
 using SQLite;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
-
-namespace PruebaP3.Services
+public class DatabaseService
 {
-    
+    private readonly SQLiteAsyncConnection _database;
 
-    public class DatabaseService
+    public DatabaseService(string dbPath)
     {
-        private readonly SQLiteAsyncConnection _database;
-
-        public DatabaseService(string dbPath)
-        {
-            _database = new SQLiteAsyncConnection(dbPath);
-            _database.CreateTableAsync<Movie>().Wait();
-        }
-
-        public Task<List<Movie>> GetMoviesAsync() => _database.Table<Movie>().ToListAsync();
-
-        public Task<int> SaveMovieAsync(Movie movie) => _database.InsertAsync(movie);
+        _database = new SQLiteAsyncConnection(dbPath);
+        _database.CreateTableAsync<Movie>().Wait(); // Asegura que la tabla existe
     }
 
+    // Método para guardar una película en la base de datos
+    public async Task SaveMovieAsync(Movie movie)
+    {
+        await _database.InsertAsync(movie);
+    }
+
+    //  Método para obtener todas las películas guardadas
+    public async Task<List<Movie>> GetMoviesAsync()
+    {
+        return await _database.Table<Movie>().ToListAsync();
+    }
 }
