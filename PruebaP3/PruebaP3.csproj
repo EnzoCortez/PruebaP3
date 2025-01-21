@@ -68,13 +68,16 @@
 	  <Compile Update="Views\MovieListPage.xaml.cs">
 	    <DependentUpon>MovieListPage.xaml</DependentUpon>
 	  </Compile>
+	  <Compile Update="Views\SearchPage.xaml.cs">
+	    <DependentUpon>SearchPage.xaml</DependentUpon>
+	  </Compile>
 	</ItemGroup>
 
 	<ItemGroup>
 	  <MauiXaml Update="Views\MovieListPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Views\Search.xaml">
+	  <MauiXaml Update="Views\SearchPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>

@@ -1,3 +1,4 @@
+
 namespace PruebaP3.View;
 
 public partial class Search : ContentPage
@@ -6,4 +7,9 @@ public partial class Search : ContentPage
 	{
 		InitializeComponent();
 	}
+
+    private void InitializeComponent()
+    {
+        throw new NotImplementedException();
+    }
 }

@@ -18,6 +18,11 @@ namespace PruebaP3.ViewModel
         private readonly MovieService _movieService;
         private readonly DatabaseService _databaseService;
 
+        public SearchViewModel()
+        {
+
+        }
+
         public SearchViewModel(MovieService movieService, DatabaseService databaseService)
         {
             _movieService = movieService;

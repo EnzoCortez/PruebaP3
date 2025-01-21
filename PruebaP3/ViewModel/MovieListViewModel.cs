@@ -12,6 +12,11 @@ namespace PruebaP3.ViewModel
     {
         private readonly DatabaseService _databaseService;
 
+        public MovieListViewModel()
+        {
+
+        }
+
         public ObservableCollection<Movie> Movies { get; } = new();
 
         public MovieListViewModel(DatabaseService databaseService)

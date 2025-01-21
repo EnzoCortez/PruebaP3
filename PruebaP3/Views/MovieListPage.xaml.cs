@@ -1,3 +1,4 @@
+
 namespace PruebaP3.Views;
 
 public partial class MoviewListPage : ContentPage
@@ -6,4 +7,9 @@ public partial class MoviewListPage : ContentPage
 	{
 		InitializeComponent();
 	}
+
+    private void InitializeComponent()
+    {
+        throw new NotImplementedException();
+    }
 }

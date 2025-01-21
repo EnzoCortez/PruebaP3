@@ -1,0 +1,17 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:PruebaP3.ViewModel"
+             x:Class="PruebaP3.Views.SearchPage"
+             Title="Enzo Cortez">
+
+    <ContentPage.BindingContext>
+        <vm:SearchViewModel/>
+    </ContentPage.BindingContext>
+
+    <VerticalStackLayout Padding="20">
+        <Entry Placeholder="Ingrese título de película" Text="{Binding SearchText}" />
+        <Button Text="Buscar" Command="{Binding SearchMovieCommand}" />
+        <Button Text="Limpiar" Command="{Binding ClearSearchCommand}" />
+        <Label Text="{Binding Message}" TextColor="Red" FontSize="16"/>
+    </VerticalStackLayout>
+</ContentPage>
