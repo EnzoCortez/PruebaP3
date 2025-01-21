@@ -1,15 +1,9 @@
+﻿namespace PruebaP3.Views;
 
-namespace PruebaP3.Views;
-
-public partial class MoviewListPage : ContentPage
+public partial class MovieListPage : ContentPage
 {
-	public MoviewListPage()
-	{
-		InitializeComponent();
-	}
-
-    private void InitializeComponent()
+    public MovieListPage()
     {
-        throw new NotImplementedException();
+        InitializeComponent(); // ← Aquí es donde ocurre el error
     }
 }

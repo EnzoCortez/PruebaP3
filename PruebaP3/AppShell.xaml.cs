@@ -1,16 +1,9 @@
-﻿
-namespace PruebaP3
-{
-    public partial class AppShell : Shell
-    {
-        public AppShell()
-        {
-            InitializeComponent();
-        }
+﻿namespace PruebaP3;
 
-        private void InitializeComponent()
-        {
-            throw new NotImplementedException();
-        }
+public partial class AppShell : Shell
+{
+    public AppShell()
+    {
+        InitializeComponent(); // ← Aquí es donde ocurre el error
     }
 }

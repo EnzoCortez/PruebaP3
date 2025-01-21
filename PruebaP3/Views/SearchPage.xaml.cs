@@ -1,15 +1,17 @@
+﻿using PruebaP3.ViewModel;
 
-namespace PruebaP3.View;
+namespace PruebaP3.Views;
 
-public partial class Search : ContentPage
+public partial class SearchPage : ContentPage
 {
-	public Search()
-	{
-		InitializeComponent();
-	}
-
-    private void InitializeComponent()
+    public SearchPage()
     {
-        throw new NotImplementedException();
+        InitializeComponent();
+    }
+
+    public SearchPage(SearchViewModel viewModel)
+    {
+        InitializeComponent();
+        BindingContext = viewModel;
     }
 }
