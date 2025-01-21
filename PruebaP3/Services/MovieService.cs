@@ -20,45 +20,53 @@ namespace PruebaP3.Services
         {
             try
             {
-                string url = $"movies?search={query}"; // Se usa la BaseAddress de HttpClient
+                string url = $"https://freetestapi.com/api/v1/movies?search={query}";
                 var response = await _httpClient.GetAsync(url);
 
                 if (!response.IsSuccessStatusCode)
                 {
-                    return null; // No se encontraron resultados o error en la API
+                    Console.WriteLine($"Error en la API: {response.StatusCode}");
+                    return null;
                 }
 
-                var json = await response.Content.ReadAsStringAsync();
-                var movies = JsonSerializer.Deserialize<List<MovieResponse>>(json);
+                string jsonResponse = await response.Content.ReadAsStringAsync();
+                Console.WriteLine($"Respuesta JSON: {jsonResponse}");
 
-                if (movies?.Count > 0)
+                var movies = JsonSerializer.Deserialize<List<MovieResponse>>(jsonResponse);
+
+                if (movies == null || movies.Count == 0)
                 {
-                    var movie = movies[0];
-                    return new Movie
-                    {
-                        Title = movie.Title,
-                        Genre = movie.Genres?[0] ?? "N/A",
-                        Actor = movie.Actors?[0] ?? "N/A",
-                        Awards = movie.Awards,
-                        Website = movie.Website
-                    };
+                    Console.WriteLine("No se encontraron películas.");
+                    return null;
                 }
-                return null;
+
+                var movie = movies[0];
+
+                return new Movie
+                {
+                    Title = movie.title,
+                    Genre = movie.genre?.FirstOrDefault() ?? "N/A",  // <-- Aquí se cambia a "Genre"
+                    Actor = movie.actors?.FirstOrDefault() ?? "N/A",
+                    Awards = movie.awards,
+                    Website = movie.website
+                };
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Error en MovieService: {ex.Message}");
+                Console.WriteLine($"Error en SearchMovieAsync: {ex.Message}");
                 return null;
             }
         }
+
+
     }
 
     public class MovieResponse
     {
-        public string Title { get; set; }
-        public List<string> Genres { get; set; }
-        public List<string> Actors { get; set; }
-        public string Awards { get; set; }
-        public string Website { get; set; }
+        public string title { get; set; }
+        public List<string> genre { get; set; }
+        public List<string> actors { get; set; }
+        public string awards { get; set; }
+        public string website { get; set; }
     }
 }
