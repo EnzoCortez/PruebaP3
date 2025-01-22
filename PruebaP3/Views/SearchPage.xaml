@@ -2,16 +2,62 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:vm="clr-namespace:PruebaP3.ViewModel"
              x:Class="PruebaP3.Views.SearchPage"
-             Title="Enzo Cortez">
+             Title="Enzo Cortez"
+             BackgroundColor="#F5F5F5">
 
     <ContentPage.BindingContext>
         <vm:SearchViewModel />
     </ContentPage.BindingContext>
 
-    <VerticalStackLayout Padding="20">
-        <Entry Placeholder="Ingrese título de película" Text="{Binding SearchText}" />
-        <Button Text="Buscar" Command="{Binding SearchMovieCommand}" />
-        <Button Text="Limpiar" Command="{Binding ClearSearchCommand}" />
-        <Label Text="{Binding Message}" TextColor="Red" FontSize="16"/>
+    <VerticalStackLayout Padding="20" Spacing="15">
+
+        <!-- Título con estilo -->
+        <Label Text="Buscar Película" 
+               FontSize="24" 
+               FontAttributes="Bold" 
+               HorizontalOptions="Center" 
+               TextColor="#333"/>
+
+        <!-- Campo de entrada con bordes redondeados -->
+        <Frame Padding="5" BackgroundColor="White" CornerRadius="10" BorderColor="#4CAF50">
+            <Entry Placeholder="Ingrese título de película"
+                   Text="{Binding SearchText}"
+                   FontSize="16"
+                   TextColor="Black"/>
+        </Frame>
+
+        <!-- Botones mejorados -->
+        <HorizontalStackLayout Spacing="10">
+            <Button Text="🔍 Buscar" Command="{Binding SearchMovieCommand}"
+                    BackgroundColor="#4CAF50"
+                    TextColor="White"
+                    CornerRadius="10"
+                    Padding="10"/>
+
+            <Button Text="❌ Limpiar" Command="{Binding ClearSearchCommand}"
+                    BackgroundColor="#FF9800"
+                    TextColor="White"
+                    CornerRadius="10"
+                    Padding="10"/>
+        </HorizontalStackLayout>
+
+        <!-- Mensaje de error -->
+        <Label Text="{Binding Message}" TextColor="Red" FontSize="16" IsVisible="{Binding IsMessageVisible}"/>
+
+        <!-- Resultados en una lista moderna -->
+        <CollectionView ItemsSource="{Binding Movies}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Frame Padding="10" Margin="5" BackgroundColor="White" CornerRadius="10" BorderColor="#E0E0E0">
+                        <VerticalStackLayout>
+                            <Label Text="{Binding Title}" FontSize="20" FontAttributes="Bold" TextColor="Black"/>
+                            <Label Text="{Binding Genre[0]}" FontSize="14" TextColor="Gray"/>
+                            <Label Text="{Binding Actor}" FontSize="16" TextColor="Blue"/>
+                        </VerticalStackLayout>
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
     </VerticalStackLayout>
 </ContentPage>

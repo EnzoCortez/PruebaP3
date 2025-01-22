@@ -15,7 +15,7 @@ public partial class MovieListPage : ContentPage
     protected override async void OnAppearing()
     {
         base.OnAppearing();
-        await _viewModel.LoadMoviesCommand.ExecuteAsync(null); // ✅ Carga las películas al abrir la página
+        await _viewModel.LoadMoviesCommand.ExecuteAsync(null); //  Carga las películas al abrir la página
     }
 }
 
